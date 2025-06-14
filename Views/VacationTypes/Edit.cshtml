@@ -1,0 +1,54 @@
+﻿@model VacationManagement.Models.VacationType
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<script src='~/js/spectrum.js'></script>
+<link rel='stylesheet' href='~/css/spectrum.css' />
+
+<h4>Edit VacationType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Id" class="form-control" hidden/>
+            <div class="form-group">
+                <label asp-for="VacationName" class="control-label"></label>
+                <input asp-for="VacationName" class="form-control" />
+                <span asp-validation-for="VacationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="backGroundColor" class="control-label"></label>
+                <input asp-for="backGroundColor" readonly class="form-control" id="backGroundColor" />
+                <span asp-validation-for="backGroundColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberDays" class="control-label"></label>
+                <input asp-for="NumberDays" class="form-control" />
+                <span asp-validation-for="NumberDays" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+            $("#backGroundColor").spectrum({
+            color :"#000",
+            preferredFormat : "hex",
+            showInput: true
+        });
+        $("#backGroundColor").show();
+    </script>
+}
